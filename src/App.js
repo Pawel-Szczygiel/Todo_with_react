@@ -43,7 +43,7 @@ function App() {
 
     return (
         <>
-            <div>0 left to do</div>
+            {todos.length > 0 ? <div>{todos.length} left to do</div> : ''}
             <input onChange={chandleInputChange} type='text' value={todo} />
             <button onClick={handleAddTodo} >Add Todo</button>
             <button onClick={handleClearChecked}>Clear Checked Todos</button>

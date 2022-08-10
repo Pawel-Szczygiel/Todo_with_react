@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-export default function Todo({id, name, complete , toggleTodo}) {
+export default function Todo({id, name, complete , toggleTodo }) {
   
   const handleCheck = () => {
     toggleTodo(id)  
@@ -12,6 +12,7 @@ export default function Todo({id, name, complete , toggleTodo}) {
       <label>
         <input type="checkbox" checked={complete}  onChange={handleCheck}/>
         {name}
+        
       </label>
     </div>
   )
