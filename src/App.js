@@ -19,12 +19,25 @@ function App() {
 
     const chandleInputChange = e => setTodo( e.target.value ); 
     
-    const addTodoHandler = () => {
-        const name = todo;
+    const handleAddTodo = () => {
+        const name = todo.trim();
         if (name === '') return;
         setTodos(prevTodo => [...prevTodo, {id: name, name, complete: false}] );
 
         setTodo('')
+    }
+
+    const toggleTodo = id => {
+      const newTodos = [...todos];
+      const todo = newTodos.find(todo => todo.id === id);
+      todo.complete = !todo.complete;
+
+      setTodos(newTodos);
+    }
+    
+    const handleClearChecked = ()  => { 
+        const incompleteTodods = todos.filter( todo => !todo.complete)
+        setTodos(incompleteTodods);
     }
     
 
@@ -32,9 +45,9 @@ function App() {
         <>
             <div>0 left to do</div>
             <input onChange={chandleInputChange} type='text' value={todo} />
-            <button onClick={addTodoHandler} >Add Todo</button>
-            <button>Clear Checked Todos</button>
-            <TodoList todos={todos}/>
+            <button onClick={handleAddTodo} >Add Todo</button>
+            <button onClick={handleClearChecked}>Clear Checked Todos</button>
+            <TodoList todos={todos} toggleTodo={toggleTodo} />
         </>
     )
 
