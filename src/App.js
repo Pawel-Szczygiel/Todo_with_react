@@ -42,16 +42,23 @@ function App() {
     
 
     return (
-        <>
-            {todos.length > 0 ? <div>{todos.length} left to do</div> : ''}
-            <input onChange={chandleInputChange} type='text' value={todo} />
-            <button onClick={handleAddTodo} >Add Todo</button>
-            <button onClick={handleClearChecked}>Clear Checked Todos</button>
+        <div className='todo-box'>
+            <div className="input-box">
+                <input className="inputTodo" onChange={chandleInputChange} type='text' value={todo} />
+                <span>todo...</span>
+            </div>
+            <div className='buttons-box'>
+                <button onClick={handleAddTodo} >Add Todo</button>
+                <button onClick={handleClearChecked}>Clear Checked Todos</button>
+            </div>
             <TodoList todos={todos} toggleTodo={toggleTodo} />
-        </>
+            
+            <div className="info-left">
+                {todos.length > 0 ? <h3>{todos.length} left to do</h3> : ''}    
+            </div>
+        </div>
     )
 
-  
 }
 
 export default App;
